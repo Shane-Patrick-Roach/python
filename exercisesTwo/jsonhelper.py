@@ -11,3 +11,12 @@ with open('example.json', 'r') as file:
     print(person_two)
 
 
+class User:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+user = User('Max', 27)
+
+
