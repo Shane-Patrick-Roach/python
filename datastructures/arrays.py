@@ -12,3 +12,8 @@ for i in range(len(nums)):
 
 
 
+num = 123
+
+numList = list(map(int, str(num)))
+
+print(type(numList[1]))
