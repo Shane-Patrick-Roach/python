@@ -1,4 +1,6 @@
-def can_construct(word, word_bank):
+def can_construct(word, word_bank, memo={}):
+    if word in memo:
+        return memo[word]
     if word == '':
         return True
 
@@ -6,7 +8,8 @@ def can_construct(word, word_bank):
         if prefix in word and word.index(prefix) == 0:
             length_prefix = len(prefix)
             new_word = word[length_prefix:]
-            if can_construct(new_word, word_bank):
+            memo[new_word] = can_construct(new_word, word_bank, memo)
+            if memo[new_word]:
                 return True
 
     return False
@@ -15,8 +18,8 @@ def can_construct(word, word_bank):
 word_bank1 = ["h", "e", "l", "o"]
 word1 = "hello"
 
-word_bank2 = ["bo","rd","ate", "b", "ska", "sk", "boar"]
+word_bank2 = ["bo", "rd", "ate", "b", "ska", "sk", "boar"]
 word2 = "skateboard"
 
 #
-print(can_construct(word2, word_bank2))
+print(can_construct(word1, word_bank1))
